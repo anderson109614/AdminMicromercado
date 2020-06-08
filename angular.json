@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AdminMicromercado"
+    }
+  },
+  "defaultProject": "AdminMicromercado",
+  "cli": {
+    "analytics": "65e60a2d-9d47-4a3e-ba1e-d4e3955eea11"
+  }
 }
