@@ -86,7 +86,7 @@ table {
 }
 
 .badge.badge-primary {
-  background: #33b35a;
+  background: #2b90d9;
 }
 
 .page {
@@ -1852,15 +1852,15 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-primary {
-  color: color-yiq(#33b35a);
-  background-color: #33b35a;
-  border-color: #33b35a;
+  color: color-yiq(#2b90d9);
+  background-color: #2b90d9;
+  border-color: #2b90d9;
 }
 
 .btn-primary:hover {
-  color: color-yiq(#2b954b);
-  background-color: #2b954b;
-  border-color: #288b46;
+  color: color-yiq(#2b90d9);
+  background-color: #2b90d9;
+  border-color: #2b90d9;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -1869,15 +1869,15 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
-  background-color: #33b35a;
-  border-color: #33b35a;
+  background-color: #1c5781;
+  border-color: #1c5781;
 }
 
 .btn-primary:not([disabled]):not(.disabled):active, .btn-primary:not([disabled]):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
-  color: color-yiq(#288b46);
-  background-color: #288b46;
-  border-color: #258141;
+  color: color-yiq(#1c5781);
+  background-color: #1c5781;
+  border-color: #1c5781;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(51, 179, 90, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(51, 179, 90, 0.5);
 }

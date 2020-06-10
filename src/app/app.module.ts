@@ -10,6 +10,8 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { NewProductoComponent } from './componentes/new-producto/new-producto.component';
+import { EditProductoComponent } from './componentes/edit-producto/edit-producto.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     ClientesComponent,
     ProductosComponent,
-    PedidosComponent
+    PedidosComponent,
+    NewProductoComponent,
+    EditProductoComponent
   ],
   imports: [
     BrowserModule,
