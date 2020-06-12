@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
       ca.Nombre as Categoria,
       pr.Id as idProducto,
       pr.Nombre as Producto,
-      pr.Foto
+      CONCAT('http://micromercadoand.atwebpages.com/img/',pr.Foto) as Foto
+      
       
   FROM
       producto pr,
@@ -38,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
         ca.Nombre as Categoria,
         pr.Id as idProducto,
         pr.Nombre as Producto,
-        pr.Foto
+        CONCAT('http://micromercadoand.atwebpages.com/img/',pr.Foto) as Foto
         
     FROM
         producto pr,
@@ -55,7 +56,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 
 
 }
+function GuardarImg($img,$nom)
+{
+    //$archivo =  "/var/www/html/webapp/sgp.ini";
+    //$contenido = parse_ini_file($archivo, true);
+    //$dbuPath = $contenido["DBU_PATH"];
 
+    $base_to_php = explode(',', $img);
+    $data = base64_decode($base_to_php[1]);
+    //codigoCliente_codPaquete_campania-anio -mes-dia-hora-minuto.tipo  date("d") . " del " . date("m")
+    $nomImg=date("Y")."-".date("m")."-".date("d")."-".date("G")."-".date("i").".png";
+    $filepath = "/home/www/micromercadoand.atwebpages.com/img/".$nomImg; // or image.jpg
+    file_put_contents($filepath, $data);
+    return $nomImg;
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     try{
@@ -73,10 +87,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             :Id_Categoria,
             '1'
         )";
+
         $statement = $dbConn->prepare($sql);
         //bindAllValues($statement, $input,-1);
         $statement->bindValue(':Nombre', $input['Nombre'] );
-        $statement->bindValue(':Foto', $input['Foto'] );
+        $nomI3='';
+        if(strlen($input['Foto'])>0){
+            $nomI3=GuardarImg($input['Foto'],$input['Nombre']);
+        } 
+        $statement->bindValue(':Foto', $nomI3);
         $statement->bindValue(':Id_Categoria', $input['Id_Categoria'] );
 
         $statement->execute();
@@ -115,7 +134,11 @@ WHERE
     //bindAllValues2($statement, $input,1,18);
 
     $statement->bindValue(':Nombre', $input['Nombre'] );
-    $statement->bindValue(':Foto', $input['Foto'] );
+    $nomI3='';
+        if(strlen($input['Foto'])>0){
+            $nomI3=GuardarImg($input['Foto'],$input['Nombre']);
+        } 
+        $statement->bindValue(':Foto', $nomI3);
     $statement->bindValue(':Id_Categoria', $input['Id_Categoria'] ); 
     $statement->bindValue(':id',   $input['Id']);
 

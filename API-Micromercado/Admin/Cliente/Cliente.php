@@ -20,7 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
      
     }
     else {
-        $sql = $dbConn->prepare("SELECT * FROM `cliente`");
+        $sql = $dbConn->prepare("SELECT 
+        `Id`,
+        `Cedula`,
+        `Nombre`,
+        `Apellido`,
+        `Telefono`,
+        `Celular`,
+        `Direccion`,
+        CONCAT('http://micromercadoand.atwebpages.com/img/',Foto) as Foto,
+        `Ubicacion`,
+        `Contrasena`,
+        `Email` 
+        FROM `cliente`");
         $sql->execute();
         $sql->setFetchMode(PDO::FETCH_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -72,6 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 header('Content-type: application/json');
 header("Access-Control-Allow-Origin: *");
-header('Access-Control-Allow-Methods','*');
+header('Access-Control-Allow-Methods:*');
 header('Access-Control-Allow-Headers: *');
 ob_end_flush();

@@ -8,8 +8,8 @@ import {Detalle} from '../Modelos/Detalle';
 })
 export class APIServisService {
  // urlP:string='https://serviciosand.000webhostapp.com/Servicios/'; 
- public urlP: string = 'http://localhost/AdminMicromercado/API-Micromercado/';
- //urlP:string='http://micromercadoand.atwebpages.com/API-Micromercado/'; 
+ //public urlP: string = 'http://localhost/AdminMicromercado/API-Micromercado/';
+ urlP:string='http://micromercadoand.atwebpages.com/API-Micromercado/'; 
   constructor(private http: HttpClient) { }
 
   postLogin(usr,pass){
