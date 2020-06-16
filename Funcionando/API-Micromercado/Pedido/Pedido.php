@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     try{
         //$input = $_POST;
         $input = (array) json_decode(file_get_contents('php://input'), TRUE);
-        $sql = "INSERT INTO `pedido`(`Id_Cliente`, `Fecha`,  `Total`, `Ubicacion`, `Id_Estado`) 
-        VALUES (:Id_Cliente, now(),  :Total, :Ubicacion,1)";
+        $sql = "INSERT INTO `pedido`(`Id_Cliente`, `Fecha`,  `Total`,IVA, `Ubicacion`, `Id_Estado`) 
+        VALUES (:Id_Cliente, now(),  :Total, 0,:Ubicacion,1)";
         $statement = $dbConn->prepare($sql);
         //bindAllValues($statement, $input,-1);
         $statement->bindValue(':Id_Cliente', $input['Id_Cliente'] );

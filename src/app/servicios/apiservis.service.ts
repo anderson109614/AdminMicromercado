@@ -9,7 +9,8 @@ import {Detalle} from '../Modelos/Detalle';
 export class APIServisService {
  // urlP:string='https://serviciosand.000webhostapp.com/Servicios/'; 
  //public urlP: string = 'http://localhost/AdminMicromercado/API-Micromercado/';
- urlP:string='http://micromercadoand.atwebpages.com/API-Micromercado/'; 
+ //urlP:string='http://micromercadoand.atwebpages.com/API-Micromercado/'; 
+ urlP:string='http://app-ee239fef-4504-41bf-9543-34aa7055f385.cleverapps.io/API-Micromercado/'; 
   constructor(private http: HttpClient) { }
 
   postLogin(usr,pass){

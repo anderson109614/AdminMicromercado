@@ -65,7 +65,7 @@ function GuardarImg($img,$nom)
     $base_to_php = explode(',', $img);
     $data = base64_decode($base_to_php[1]);
     //codigoCliente_codPaquete_campania-anio -mes-dia-hora-minuto.tipo  date("d") . " del " . date("m")
-    $nomImg=date("Y")."-".date("m")."-".date("d")."-".date("G")."-".date("i").".png";
+    $nomImg=$nom.date("Y")."-".date("m")."-".date("d")."-".date("G")."-".date("i").".png";
     //$filepath = "/home/www/micromercadoand.atwebpages.com/img/".$nomImg; // or image.jpg
     $filepath = "../../../img/".$nomImg; // or image.jpg
     file_put_contents($filepath, $data);
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $statement->bindValue(':Nombre', $input['Nombre'] );
         $nomI3='no-imagen.jpg';
         if(strlen($input['Foto'])>0){
-            $nomI3=GuardarImg($input['Foto'],$input['Nombre']);
+            $nomI3=GuardarImg($input['Foto'],$input['Id_Categoria']);
         } 
         $statement->bindValue(':Foto', $nomI3);
         $statement->bindValue(':Id_Categoria', $input['Id_Categoria'] );
@@ -137,7 +137,7 @@ WHERE
     $statement->bindValue(':Nombre', $input['Nombre'] );
     $nomI3='no-imagen.jpg';
         if(strlen($input['Foto'])>0){
-		if($input['Foto'] != 'http://micromercadoand.atwebpages.com/img/no-imagen.jpg'){
+		if($input['Foto'] != $urlAPi.'no-imagen.jpg'){
            		 $nomI3=GuardarImg($input['Foto'],$input['Nombre']);
 		}
         } 

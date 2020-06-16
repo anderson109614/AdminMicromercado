@@ -171,10 +171,12 @@ export class NewProductoComponent implements OnInit {
       alert('Seleccione una categoria');
       return false;
     }
+    /*
     if(p.Foto.length==0){
       alert('Añada una fotografia');
       return false;
     }
+    */
     if(this.DetallesSelecionadas.length==0){
       alert('Añada minumo un detalle');
       return false;

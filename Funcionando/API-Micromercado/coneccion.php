@@ -1,13 +1,13 @@
 <?php
 
 $db = [
-    'host' => 'fdb25.awardspace.net',
-    'username' => '3457222_dbmicromercado',
-    'password' => '1096anderson',
-    'db' => '3457222_dbmicromercado' 
+    'host' => 'btmb3qlrmuy0ckijcl3g-mysql.services.clever-cloud.com',
+    'username' => 'umjuyueocaxayceh',
+    'password' => 'vy2F5qFFA0clu5QN0zlj',
+    'db' => 'btmb3qlrmuy0ckijcl3g' 
 ];
 
-$urlAPi='http://micromercadoand.atwebpages.com/img/';
+$urlAPi='http://app-ee239fef-4504-41bf-9543-34aa7055f385.cleverapps.io/img/';
   //Abrir conexion a la base de datos
   function connect($db)
   {

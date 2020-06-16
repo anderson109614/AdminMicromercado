@@ -8,12 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     try {
       	
            $sql = $dbConn->prepare("
-				SELECT * FROM cliente;
+				SELECT Email FROM cliente ;
            ");
-           
+         //  $sql->bindValue(':email', $_GET['mail']); WHERE Email=:email
             $sql->execute();
 	    $sql->setFetchMode(PDO::FETCH_OBJ);
-            header("HTTP/1.1 200 OK");
+           header("HTTP/1.1 200 OK");
             echo json_encode($sql->fetchAll());
      		
  		
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             `Telefono`,
             `Celular`,
             `Direccion`,
-            'Foto',
+             Foto,
             `Ubicacion`,
             `Contrasena`,
             `Email`
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             :Telefono,
             :Celular,
             :Direccion,
-            :Foto
+            :Foto,
             :Ubicacion,
             :Contrasena,
             :Email
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $nomI3='img_avatar.png';
         if(strlen($input['Foto'])>0){
-            $nomI3=GuardarImg($input['Foto']);
+            $nomI3=GuardarImg($input['Foto'],$input['Cedula']);
         } 
         $statement->bindValue(':Foto', $nomI3);
         $statement->bindValue(':Ubicacion', $input['Ubicacion']);
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 }
-function GuardarImg($img,$nom)
+function GuardarImg($img,$ced)
 {
     //$archivo =  "/var/www/html/webapp/sgp.ini";
     //$contenido = parse_ini_file($archivo, true);
@@ -91,7 +91,7 @@ function GuardarImg($img,$nom)
     $base_to_php = explode(',', $img);
     $data = base64_decode($base_to_php[1]);
     //codigoCliente_codPaquete_campania-anio -mes-dia-hora-minuto.tipo  date("d") . " del " . date("m")
-    $nomImg=date("Y")."-".date("m")."-".date("d")."-".date("G")."-".date("i").".png";
+    $nomImg=$ced.date("Y")."-".date("m")."-".date("d")."-".date("G")."-".date("i").".png";
     //$filepath = "/home/www/micromercadoand.atwebpages.com/img/".$nomImg; // or image.jpg
     $filepath = "../../img/".$nomImg; // or image.jpg
     file_put_contents($filepath, $data);
